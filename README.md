@@ -50,6 +50,21 @@ For example, a product search query string might look like `?post_type=product&m
 
 As with `WP_Query` and `get_posts()`, you can use the `orderby` and `order` (`ASC` and `DESC`) options to set the order of the posts. You can also sort by price, using `?orderby=price`. See the [WordPress documentation](https://codex.wordpress.org/Template_Tags/get_posts) for the default options.
 
+Therefore, you could use something like the following to allow quick sorting of products on a search or archive page:
+
+    <?php
+
+    $asc = add_query_arg('order', 'asc');
+    $desc = add_query_arg('order', 'desc');
+
+    ?>
+    <p>
+        <a href="<?= add_query_arg('orderby', 'title', $asc) ?>">Sort by name (ascending)</a>
+        <a href="<?= add_query_arg('orderby', 'title', $desc) ?>">Sort by name (descending)</a>
+        <a href="<?= add_query_arg('orderby', 'price', $asc) ?>">Sort by price (ascending)</a>
+        <a href="<?= add_query_arg('orderby', 'price', $desc) ?>">Sort by price (descending)</a>
+    </p>
+
 ## Templates ##
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
