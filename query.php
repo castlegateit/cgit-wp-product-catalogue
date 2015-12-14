@@ -37,6 +37,12 @@ add_filter('pre_get_posts', function($query) {
     // Add meta query to main search query
     $query->set('meta_query', $meta_query);
 
+    // Allow search to be ordered by price
+    if (get_query_var('orderby') == 'price') {
+        $query->set('orderby', 'meta_value_num');
+        $query->set('meta_key', 'price');
+    }
+
     // Return query
     return $query;
 });

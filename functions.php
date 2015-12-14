@@ -148,6 +148,11 @@ function get_products($args) {
     $args['post_type'] = CGIT_PRODUCT_POST_TYPE;
     $args['meta_query'] = get_product_meta_query($args);
 
+    if (isset($args) && $args['orderby'] == 'price') {
+        $args['orderby'] = 'meta_value_num';
+        $args['meta_key'] = 'price';
+    }
+
     // Get posts
     $items = get_posts($args);
 

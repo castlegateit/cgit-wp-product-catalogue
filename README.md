@@ -48,6 +48,8 @@ The plugin provides the function `get_product_meta_query()` that converts `WP_Qu
 
 For example, a product search query string might look like `?post_type=product&max_price=20&featured=1`. These searches can be combined with the default WordPress search query string, e.g. `?s=example`.
 
+As with `WP_Query` and `get_posts()`, you can use the `orderby` and `order` (`ASC` and `DESC`) options to set the order of the posts. You can also sort by price, using `?orderby=price`. See the [WordPress documentation](https://codex.wordpress.org/Template_Tags/get_posts) for the default options.
+
 ## Templates ##
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
