@@ -36,7 +36,7 @@ This field cannot be edited directly in WordPress, but will be updated every tim
 
 ## Searches and queries ##
 
-The plugin provides the function `get_product_meta_query()` that converts `WP_Query`-like arguments related to products into a meta query that is actually compatible with `WP_Query`. This function is used internally to filter searches that are specifically restricted to the product post type, allowing the following query parameters:
+The plugin provides the function `cgit_product_meta_query()` that converts `WP_Query`-like arguments related to products into a meta query that is actually compatible with `WP_Query`. This function is used internally to filter searches that are specifically restricted to the product post type, allowing the following query parameters:
 
 *   `min_price` minimum price (number)
 *   `max_price` minimum price (number)
@@ -69,15 +69,15 @@ Therefore, you could use something like the following to allow quick sorting of 
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
 
-The plugin provides the `get_product_search_form()` function, the `product_search` shortcode, and a product search widget. However, these can be considered examples; the exact requirements of your site will probably necessitate a custom search form.
+The plugin provides the `cgit_product_search_form()` function, the `product_search` shortcode, and a product search widget. However, these can be considered examples; the exact requirements of your site will probably necessitate a custom search form.
 
 ## Functions ##
 
-`get_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. This is provided for convenience, so you don't have to write lots of `get_field()` calls.
+`cgit_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. This is provided for convenience, so you don't have to write lots of `get_field()` calls.
 
-`get_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
+`cgit_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
 
-    $featured = get_products(array(
+    $featured = cgit_products(array(
         'featured' => true
     ));
 

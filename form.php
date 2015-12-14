@@ -14,14 +14,14 @@ namespace Cgit;
 /**
  * Function to return basic search form
  */
-function get_product_search_form() {
+function cgit_product_search_form() {
     include dirname(__FILE__) . '/views/search-form.php';
 }
 
 /**
  * Search form shortcode
  */
-add_shortcode('product_search', 'get_product_search_form');
+add_shortcode('product_search', 'cgit_product_search_form');
 
 /**
  * Search widget
@@ -50,7 +50,7 @@ class ProductSearchWidget extends \WP_Widget {
                 . $args['after_title'];
         }
 
-        echo get_product_search_form();
+        echo cgit_product_search_form();
         echo $args['after_widget'];
     }
 

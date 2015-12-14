@@ -7,7 +7,7 @@
  * by other functions and filters.
  */
 add_filter('query_vars', function($vars) {
-    return array_merge($vars, array_keys(get_product_default_args()));
+    return array_merge($vars, array_keys(cgit_product_default_args()));
 });
 
 /**
@@ -24,7 +24,7 @@ add_filter('pre_get_posts', function($query) {
     }
 
     // Product search parameters and default values
-    $args = get_product_default_args();
+    $args = cgit_product_default_args();
 
     // Get search parameters from query string
     foreach ($args as $key => $value) {
@@ -32,7 +32,7 @@ add_filter('pre_get_posts', function($query) {
     }
 
     // Convert search parameters into WP meta query
-    $meta_query = get_product_meta_query($args);
+    $meta_query = cgit_product_meta_query($args);
 
     // Add meta query to main search query
     $query->set('meta_query', $meta_query);

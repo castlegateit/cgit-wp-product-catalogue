@@ -5,7 +5,7 @@
  *
  * Returns a Cgit\Product object for the given post ID.
  */
-function get_product($id) {
+function cgit_product($id) {
     return new Cgit\Product($id);
 }
 
@@ -16,7 +16,7 @@ function get_product($id) {
  * and filters. It should be a constant, but this will not be possible until
  * PHP 7.
  */
-function get_product_default_args() {
+function cgit_product_default_args() {
     return array(
         'match_any' => false,
         'min_price' => false,
@@ -37,10 +37,10 @@ function get_product_default_args() {
  * get_posts(), this returns a meta query array that can be used with
  * get_posts() or WP_Query.
  */
-function get_product_meta_query($args) {
+function cgit_product_meta_query($args) {
 
     // Default values
-    $args = array_merge(get_product_default_args(), $args);
+    $args = array_merge(cgit_product_default_args(), $args);
 
     // Meta query
     $meta_query = array();
@@ -142,11 +142,11 @@ function get_product_meta_query($args) {
  * cat_code, and stock. You can also use the match_any option to use an 'OR'
  * relationship between meta queries instead of the default 'AND' relationship.
  */
-function get_products($args) {
+function cgit_products($args) {
 
     // Amend options for product type and fields
     $args['post_type'] = CGIT_PRODUCT_POST_TYPE;
-    $args['meta_query'] = get_product_meta_query($args);
+    $args['meta_query'] = cgit_product_meta_query($args);
 
     if (isset($args) && $args['orderby'] == 'price') {
         $args['orderby'] = 'meta_value_num';
@@ -154,13 +154,13 @@ function get_products($args) {
     }
 
     // Get posts
-    $items = get_posts($args);
+    $items = cgit_posts($args);
 
     // Generate list of product objects instead of default WP_Post objects
     $products = array();
 
     foreach ($items as $item) {
-        $products[] = get_product($item->ID);
+        $products[] = cgit_product($item->ID);
     }
 
     return $products;
