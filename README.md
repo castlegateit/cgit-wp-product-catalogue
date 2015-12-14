@@ -69,6 +69,8 @@ Therefore, you could use something like the following to allow quick sorting of 
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
 
+The plugin provides the `get_product_search_form()` function, the `product_search` shortcode, and a product search widget. However, these can be considered examples; the exact requirements of your site will probably necessitate a custom search form.
+
 ## Functions ##
 
 `get_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. This is provided for convenience, so you don't have to write lots of `get_field()` calls.

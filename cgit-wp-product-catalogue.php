@@ -54,3 +54,4 @@ include 'prices.php';
 include 'product.php';
 include 'functions.php';
 include 'query.php';
+include 'form.php';
