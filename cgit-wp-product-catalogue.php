@@ -5,7 +5,7 @@
 Plugin Name: Castlegate IT WP Product Catalogue
 Plugin URI: http://github.com/castlegateit/cgit-wp-product-catalogue
 Description: Flexible product catalogue plugin for WordPress.
-Version: 1.0
+Version: 0.1
 Author: Castlegate IT
 Author URI: http://www.castlegateit.co.uk/
 License: MIT
