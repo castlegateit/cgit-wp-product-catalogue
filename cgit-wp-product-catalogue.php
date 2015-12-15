@@ -55,3 +55,4 @@ include 'product.php';
 include 'functions.php';
 include 'query.php';
 include 'form.php';
+include 'widget.php';

@@ -71,7 +71,7 @@ Searching by custom taxonomy is supported natively by WordPress, using the taxon
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
 
-The plugin provides the `cgit_product_search_form()` function, the `product_search` shortcode, and a product search widget. However, these can be considered examples; the exact requirements of your site will probably necessitate a custom search form.
+The plugin provides the `cgit_product_search_form()` function, the `product_search` shortcode, and a product search widget. Their default output can be considered an example form; you can create your own forms or use the `cgit_product_search_form` filter to customize this form to suit your site.
 
 ## Functions ##
 
@@ -93,6 +93,7 @@ Various filters are available to edit the product post type and fields.
 *   `cgit_product_related_fields` filters the related product field options passed to ACF.
 *   `cgit_product_category` filters the options passed to the `register_taxonomy()` function that defined the product category taxonomy.
 *   `cgit_product_tag` filters the options passed to the `register_taxonomy()` function that defined the product tag taxonomy.
+*   `cgit_product_search_form` filters the HTML of the default search form. You could use this to edit or replace the default search form.
 *   `cgit_product_meta_query` is used in the `cgit_product_meta_query()` function that converts query parameters to WordPress meta queries. You can use this to extend the range of searchable fields.
 
 ## Requirements ##
