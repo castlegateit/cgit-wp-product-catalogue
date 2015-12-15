@@ -75,7 +75,7 @@ The plugin provides the `cgit_product_search_form()` function, the `product_sear
 
 ## Functions ##
 
-`cgit_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. This is provided for convenience, so you don't have to write lots of `get_field()` calls.
+`cgit_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. If `$post_id` is not specified, the function uses the current post ID. This function is provided for convenience, so you don't have to write lots of `get_field()` calls.
 
 `cgit_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
 

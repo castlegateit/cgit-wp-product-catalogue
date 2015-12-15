@@ -5,7 +5,13 @@
  *
  * Returns a Cgit\Product object for the given post ID.
  */
-function cgit_product($id) {
+function cgit_product($id = null) {
+
+    // If ID is not specified, use $post->ID
+    if (is_null($id) && isset($GLOBALS['post'])) {
+        $id = $GLOBALS['post']->ID;
+    }
+
     return new Cgit\Product($id);
 }
 
