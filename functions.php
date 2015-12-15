@@ -160,7 +160,7 @@ function cgit_products($args) {
     }
 
     // Get posts
-    $items = cgit_posts($args);
+    $items = get_posts($args);
 
     // Generate list of product objects instead of default WP_Post objects
     $products = array();

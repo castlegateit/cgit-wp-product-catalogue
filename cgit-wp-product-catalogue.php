@@ -21,7 +21,7 @@ License: MIT
  * wp-config.php.
  */
 defined('CGIT_PRODUCT_POST_TYPE')
-    ||define('CGIT_PRODUCT_POST_TYPE', 'product');
+    || define('CGIT_PRODUCT_POST_TYPE', 'product');
 defined('CGIT_PRODUCT_CATEGORY')
     || define('CGIT_PRODUCT_CATEGORY', 'product_category');
 defined('CGIT_PRODUCT_TAG')
