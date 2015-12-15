@@ -15,6 +15,11 @@ namespace Cgit;
  * Function to return basic search form
  */
 function cgit_product_search_form() {
+    $cat_tax = get_taxonomy(CGIT_PRODUCT_CATEGORY);
+    $tag_tax = get_taxonomy(CGIT_PRODUCT_TAG);
+    $cats = get_terms(CGIT_PRODUCT_CATEGORY);
+    $tags = get_terms(CGIT_PRODUCT_TAG);
+
     include dirname(__FILE__) . '/views/search-form.php';
 }
 

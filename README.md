@@ -65,6 +65,8 @@ Therefore, you could use something like the following to allow quick sorting of 
         <a href="<?= add_query_arg('orderby', 'price', $desc) ?>">Sort by price (descending)</a>
     </p>
 
+Searching by custom taxonomy is supported natively by WordPress, using the taxonomy slug as the query parameter. Assuming that `CGIT_PRODUCT_CATEGORY` is `product-category`, you can could use `?product-category=foo` to search for a single category or `?product-category[]=foo&product-category[]=bar` to search for multiple categories.
+
 ## Templates ##
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.

@@ -52,6 +52,26 @@
             <input type="text" name="cat_code" id="product_cat_code" />
         </p>
 
+        <p>
+            <?= $cat_tax->labels->name ?>:
+            <?php foreach ($cats as $cat): ?>
+                <label>
+                    <input type="checkbox" name="<?= $cat->taxonomy ?>[]" value="<?= $cat->slug ?>" />
+                    <?= $cat->name ?>
+                </label>
+            <?php endforeach; ?>
+        </p>
+
+        <p>
+            <?= $tag_tax->labels->name ?>:
+            <?php foreach ($tags as $tag): ?>
+                <label>
+                    <input type="checkbox" name="<?= $tag->taxonomy ?>[]" value="<?= $tag->slug ?>" />
+                    <?= $tag->name ?>
+                </label>
+            <?php endforeach; ?>
+        </p>
+
         <button>Search</button>
 
     </form>
