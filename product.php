@@ -22,6 +22,11 @@ class Product
     {
         $obj = get_post($id);
 
+        // Check post is a product
+        if ($obj->post_type != CGIT_PRODUCT_POST_TYPE) {
+            trigger_error('Post ' . $id . ' is not a product', E_USER_WARNING);
+        }
+
         // Add WP_Post properties
         foreach ($obj as $property => $value) {
             $this->$property = $value;
