@@ -52,6 +52,7 @@
             <input type="text" name="cat_code" id="product_cat_code" />
         </p>
 
+        <?php if (count($cats) > 0): ?>
         <p>
             <?= $cat_tax->labels->name ?>:
             <?php foreach ($cats as $cat): ?>
@@ -61,7 +62,9 @@
                 </label>
             <?php endforeach; ?>
         </p>
+        <?php endif; ?>
 
+        <?php if (count($tags) > 0): ?>
         <p>
             <?= $tag_tax->labels->name ?>:
             <?php foreach ($tags as $tag): ?>
@@ -71,6 +74,7 @@
                 </label>
             <?php endforeach; ?>
         </p>
+        <?php endif; ?>
 
         <button>Search</button>
 
