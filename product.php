@@ -64,14 +64,14 @@ class Product
      * separate method outside of the constructor to avoid infinite loops.
      */
     public function related() {
-        $related = $this->product_related;
+        $items = $this->product_related;
         $products = array();
 
-        if (!$related) {
+        if (!$items) {
             return $products;
         }
 
-        foreach ($related as $item) {
+        foreach ($items as $item) {
             $products[] = new Product($item->ID);
         }
 
