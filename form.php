@@ -31,12 +31,14 @@ add_shortcode('product_search', 'cgit_product_search_form');
 /**
  * Search widget
  */
-class ProductSearchWidget extends \WP_Widget {
+class ProductSearchWidget extends \WP_Widget
+{
 
     /**
      * Register widget
      */
-    function __construct() {
+    function __construct()
+    {
         parent::__construct(
             'cgit_product_search_widget',
             __('Product Search', 'text_domain')
@@ -46,7 +48,8 @@ class ProductSearchWidget extends \WP_Widget {
     /**
      * Display widget content
      */
-    public function widget($args, $instance) {
+    public function widget($args, $instance)
+    {
         echo $args['before_widget'];
 
         if (!empty($instance['title'])) {
@@ -62,7 +65,8 @@ class ProductSearchWidget extends \WP_Widget {
     /**
      * Display widget settings
      */
-    public function form($instance) {
+    public function form($instance)
+    {
         $title = !empty($instance['title']) ? $instance['title'] :
             __('Product Search', 'text_domain');
         $id = $this->get_field_id('title');
@@ -78,7 +82,8 @@ class ProductSearchWidget extends \WP_Widget {
     /**
      * Save widget settings
      */
-    public function update($new_instance, $old_instance) {
+    public function update($new_instance, $old_instance)
+    {
         $instance = array();
         $instance['title'] = (!empty($new_instance['title'])) ?
             strip_tags($new_instance['title']) : '';
