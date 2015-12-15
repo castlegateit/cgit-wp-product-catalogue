@@ -7,8 +7,8 @@ The Castlegate IT WP Product Catalogue plugin provides a simple, searchable prod
 The post type and taxonomy names are set with constants. These can be overridden to avoid naming conflicts by defining the constants earlier, e.g. in `wp-config.php`.
 
 *   `CGIT_PRODUCT_POST_TYPE` is the post type name, default `product`.
-*   `CGIT_PRODUCT_CATEGORY` is the category taxonomy name, default `product-category`.
-*   `CGIT_PRODUCT_TAG` is the tag taxonomy name, default `product-tag`.
+*   `CGIT_PRODUCT_CATEGORY` is the category taxonomy name, default `product_category`.
+*   `CGIT_PRODUCT_TAG` is the tag taxonomy name, default `product_tag`.
 
 The currency symbol displayed in the WP admin interface is also set using the `CGIT_PRODUCT_CURRENCY` constant and can be overridden. The default value is `&pound;` Note that the symbol is only used in the admin panel; it is not stored in the database.
 
@@ -65,7 +65,7 @@ Therefore, you could use something like the following to allow quick sorting of 
         <a href="<?= add_query_arg('orderby', 'price', $desc) ?>">Sort by price (descending)</a>
     </p>
 
-Searching by custom taxonomy is supported natively by WordPress, using the taxonomy slug as the query parameter. Assuming that `CGIT_PRODUCT_CATEGORY` is `product-category`, you can could use `?product-category=foo` to search for a single category or `?product-category[]=foo&product-category[]=bar` to search for multiple categories.
+Searching by custom taxonomy is supported natively by WordPress, using the taxonomy slug as the query parameter. Assuming that `CGIT_PRODUCT_CATEGORY` is `product_category`, you can could use `?product_category=foo` to search for a single category or `?product_category[]=foo&product_category[]=bar` to search for multiple categories.
 
 ## Templates ##
 

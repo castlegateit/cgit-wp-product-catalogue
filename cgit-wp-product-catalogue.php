@@ -23,9 +23,9 @@ License: MIT
 defined('CGIT_PRODUCT_POST_TYPE')
     ||define('CGIT_PRODUCT_POST_TYPE', 'product');
 defined('CGIT_PRODUCT_CATEGORY')
-    || define('CGIT_PRODUCT_CATEGORY', 'product-category');
+    || define('CGIT_PRODUCT_CATEGORY', 'product_category');
 defined('CGIT_PRODUCT_TAG')
-    || define('CGIT_PRODUCT_TAG', 'product-tag');
+    || define('CGIT_PRODUCT_TAG', 'product_tag');
 defined('CGIT_PRODUCT_CURRENCY')
     || define('CGIT_PRODUCT_CURRENCY', '&pound;');
 
