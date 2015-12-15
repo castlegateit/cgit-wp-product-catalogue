@@ -45,12 +45,36 @@ class Product
             'cat_code',
             'stock',
             'variants',
-            'related',
         );
 
         foreach ($fields as $field) {
             $property = 'product_' . $field;
             $this->$property = get_field($field, $id);
         }
+
+        // Add related products
+        $this->product_related = get_field('related_products', $id);
+    }
+
+    /**
+     * Related products
+     *
+     * The product_related property returns an array of WP_Post objects. This
+     * method returns an array of Cgit\Product objects. This has to be a
+     * separate method outside of the constructor to avoid infinite loops.
+     */
+    public function related() {
+        $related = $this->product_related;
+        $products = array();
+
+        if (!$related) {
+            return $products;
+        }
+
+        foreach ($related as $item) {
+            $products[] = new Product($item->ID);
+        }
+
+        return $products;
     }
 }
