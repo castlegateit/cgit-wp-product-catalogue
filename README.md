@@ -93,6 +93,7 @@ Various filters are available to edit the product post type and fields.
 *   `cgit_product_related_fields` filters the related product field options passed to ACF.
 *   `cgit_product_category` filters the options passed to the `register_taxonomy()` function that defined the product category taxonomy.
 *   `cgit_product_tag` filters the options passed to the `register_taxonomy()` function that defined the product tag taxonomy.
+*   `cgit_product_meta_query` is used in the `cgit_product_meta_query()` function that converts query parameters to WordPress meta queries. You can use this to extend the range of searchable fields.
 
 ## Requirements ##
 
