@@ -154,7 +154,7 @@ function cgit_products($args) {
     $args['post_type'] = CGIT_PRODUCT_POST_TYPE;
     $args['meta_query'] = cgit_product_meta_query($args);
 
-    if (isset($args) && $args['orderby'] == 'price') {
+    if (isset($args['orderby']) && $args['orderby'] == 'price') {
         $args['orderby'] = 'meta_value_num';
         $args['meta_key'] = 'price';
     }
