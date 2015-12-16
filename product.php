@@ -63,7 +63,8 @@ class Product
      * method returns an array of Cgit\Product objects. This has to be a
      * separate method outside of the constructor to avoid infinite loops.
      */
-    public function related() {
+    public function related()
+    {
         $items = $this->product_related;
         $products = array();
 
