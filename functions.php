@@ -134,7 +134,7 @@ function cgit_product_meta_query($args) {
         }
     }
 
-    return apply_filters('cgit_product_meta_query', $meta_query);
+    return apply_filters('cgit_product_meta_query', $meta_query, $args);
 }
 
 /**
