@@ -23,7 +23,7 @@ function cgit_product($id = null) {
  * PHP 7.
  */
 function cgit_product_default_args() {
-    return array(
+    $args = array(
         'match_any' => false,
         'min_price' => false,
         'max_price' => false,
@@ -33,6 +33,8 @@ function cgit_product_default_args() {
         'cat_code' => false,
         'stock' => false,
     );
+
+    return apply_filters('cgit_product_default_args', $args);
 }
 
 /**
