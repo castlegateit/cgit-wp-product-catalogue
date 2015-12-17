@@ -12,6 +12,8 @@ The post type and taxonomy names are set with constants. These can be overridden
 
 The currency symbol displayed in the WP admin interface is also set using the `CGIT_PRODUCT_CURRENCY` constant and can be overridden. The default value is `&pound;` Note that the symbol is only used in the admin panel; it is not stored in the database.
 
+The number of products per page (in archives or searches) can be customized with `CGIT_PRODUCT_PER_PAGE`. By default, this constant is not defined and the number of products per page will be the same as the number of posts per page.
+
 ## Post type, fields, and taxonomies ##
 
 Products exist as entries in the product post type. They support the same range of fields as regular posts or pages, including comments. They also include various custom fields, defined using ACF:
@@ -27,6 +29,8 @@ Products exist as entries in the product post type. They support the same range 
 *   Related products
 
 Two taxonomies have also been defined for the product post type: categories and tags. These should behave like their equivalents for the default post type.
+
+The main product listing `archive-product.php` will list featured products first, then all products in alphabetical order.
 
 ## Prices and discounts ##
 
