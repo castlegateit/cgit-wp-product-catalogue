@@ -165,6 +165,7 @@ add_action('init', function() {
                         'name' => 'variant_name',
                         'key' => 'variant_name',
                         'type' => 'text',
+                        'required' => true,
                     ),
                     array(
                         'label' => 'Description',
