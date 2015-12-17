@@ -57,7 +57,7 @@
             <?= $cat_tax->labels->name ?>:
             <?php foreach ($cats as $cat): ?>
                 <label>
-                    <input type="checkbox" name="<?= $cat->taxonomy ?>[]" value="<?= $cat->slug ?>" <?= in_array($cat->slug, get_query_var(CGIT_PRODUCT_CATEGORY)) ? 'checked' : '' ?> />
+                    <input type="checkbox" name="<?= $cat->taxonomy ?>[]" value="<?= $cat->slug ?>" <?= in_array($cat->slug, get_query_var(CGIT_PRODUCT_CATEGORY, array())) ? 'checked' : '' ?> />
                     <?= $cat->name ?>
                 </label>
             <?php endforeach; ?>
@@ -69,7 +69,7 @@
             <?= $tag_tax->labels->name ?>:
             <?php foreach ($tags as $tag): ?>
                 <label>
-                    <input type="checkbox" name="<?= $tag->taxonomy ?>[]" value="<?= $tag->slug ?>" <?= in_array($cat->slug, get_query_var(CGIT_PRODUCT_TAG)) ? 'checked' : '' ?> />
+                    <input type="checkbox" name="<?= $tag->taxonomy ?>[]" value="<?= $tag->slug ?>" <?= in_array($tag->slug, get_query_var(CGIT_PRODUCT_TAG, array())) ? 'checked' : '' ?> />
                     <?= $tag->name ?>
                 </label>
             <?php endforeach; ?>
