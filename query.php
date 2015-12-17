@@ -51,7 +51,7 @@ add_filter('pre_get_posts', function($query) {
 
     // Return query
     return $query;
-});
+}, 10);
 
 /**
  * Default sort order and pagination
@@ -77,4 +77,4 @@ add_filter('pre_get_posts', function($query) {
     $query->set('meta_key', 'featured');
 
     return $query;
-});
+}, 20);
