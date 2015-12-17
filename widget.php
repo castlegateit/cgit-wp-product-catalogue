@@ -45,7 +45,7 @@ class ProductSearchWidget extends \WP_Widget
     public function form($instance)
     {
         $title = !empty($instance['title']) ? $instance['title'] :
-            __('Product Search', 'text_domain');
+            __('Product search', 'text_domain');
         $id = $this->get_field_id('title');
         $name = $this->get_field_name('title');
         $label = __('Title:');
