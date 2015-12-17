@@ -46,13 +46,13 @@ register_activation_hook(__FILE__, function() {
 /**
  * Includes
  */
-include 'post-type.php';
-include 'templates.php';
-include 'taxonomies.php';
-include 'fields.php';
-include 'prices.php';
-include 'product.php';
-include 'functions.php';
-include 'query.php';
-include 'form.php';
-include 'widget.php';
+include dirname(__FILE__) . '/post-type.php';
+include dirname(__FILE__) . '/templates.php';
+include dirname(__FILE__) . '/taxonomies.php';
+include dirname(__FILE__) . '/fields.php';
+include dirname(__FILE__) . '/prices.php';
+include dirname(__FILE__) . '/product.php';
+include dirname(__FILE__) . '/functions.php';
+include dirname(__FILE__) . '/query.php';
+include dirname(__FILE__) . '/form.php';
+include dirname(__FILE__) . '/widget.php';
