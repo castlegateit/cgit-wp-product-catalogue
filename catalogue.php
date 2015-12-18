@@ -100,7 +100,7 @@ class ProductCatalogue extends ProductUtil
     public function setQueryVars($query)
     {
         // Filter should only affect product search
-        if (get_query_var('post_type') != CGIT_PRODUCT_POST_TYPE) {
+        if ($query->query['post_type'] != CGIT_PRODUCT_POST_TYPE) {
             return $query;
         }
 
