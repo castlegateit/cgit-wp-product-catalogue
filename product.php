@@ -54,6 +54,13 @@ class Product
 
         // Add related products
         $this->product_related = get_field('related_products', $id);
+
+        // Allow custom properties to be added to the object
+        $custom = apply_filters('cgit_product_properties', array(), $id);
+
+        foreach ($custom as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     /**
