@@ -20,7 +20,7 @@ add_filter('pre_get_posts', function($query) {
 
     // Filter should only affect product search
     if (get_query_var('post_type') != CGIT_PRODUCT_POST_TYPE) {
-        return;
+        return $query;
     }
 
     // Product search parameters and default values
@@ -37,6 +37,17 @@ add_filter('pre_get_posts', function($query) {
     // Add meta query to main search query
     $query->set('meta_query', $meta_query);
 
+    // Set default search order
+    if (!get_query_var('orderby')) {
+        $order = array(
+            'meta_value_num' => 'DESC',
+            'title' => 'ASC',
+        );
+
+        $query->set('orderby', $order);
+        $query->set('meta_key', 'featured');
+    }
+
     // Allow search to be ordered by price
     if (get_query_var('orderby') == 'price') {
         $query->set('orderby', 'meta_value_num');
@@ -51,30 +62,4 @@ add_filter('pre_get_posts', function($query) {
 
     // Return query
     return $query;
-}, 10);
-
-/**
- * Default sort order and pagination
- *
- * This function sets the default sort order of products in the main product
- * archive. This does not affect product searches. The default order is:
- * featured first, then sorted alphabetically by name.
- */
-add_filter('pre_get_posts', function($query) {
-
-    // Filter only affects main product archive
-    if (!is_search() && !is_post_type_archive(CGIT_PRODUCT_POST_TYPE)) {
-        return;
-    }
-
-    // Set default sort order: featured first, then alphabetical
-    $order = array(
-        'meta_value_num' => 'DESC',
-        'title' => 'ASC',
-    );
-
-    $query->set('orderby', $order);
-    $query->set('meta_key', 'featured');
-
-    return $query;
-}, 20);
+});
