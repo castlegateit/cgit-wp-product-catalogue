@@ -166,9 +166,15 @@ class ProductCatalogue extends ProductUtil
         $args['post_type'] = CGIT_PRODUCT_POST_TYPE;
         $args['meta_query'] = $this->metaQuery($args);
 
+        // Allow sorting by price
         if (isset($args['orderby']) && $args['orderby'] == 'price') {
             $args['orderby'] = 'meta_value_num';
             $args['meta_key'] = 'price';
+        }
+
+        // Nobody really wants five items by default
+        if (!isset($args['posts_per_page'])) {
+            $args['posts_per_page'] = -1;
         }
 
         // Get posts
