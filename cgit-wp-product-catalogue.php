@@ -44,15 +44,33 @@ register_activation_hook(__FILE__, function() {
 });
 
 /**
- * Includes
+ * Load plugin
+ *
+ * This uses the plugins_loaded action to control the order in which plugins are
+ * loaded. Any plugins depending on this one can be added to the same action
+ * with a priority value larger than 10.
  */
-include dirname(__FILE__) . '/post-type.php';
-include dirname(__FILE__) . '/templates.php';
-include dirname(__FILE__) . '/taxonomies.php';
-include dirname(__FILE__) . '/fields.php';
-include dirname(__FILE__) . '/prices.php';
-include dirname(__FILE__) . '/product.php';
-include dirname(__FILE__) . '/functions.php';
-include dirname(__FILE__) . '/query.php';
-include dirname(__FILE__) . '/form.php';
-include dirname(__FILE__) . '/widget.php';
+add_action('plugins_loaded', function() {
+
+    // Include catalogue features
+    include dirname(__FILE__) . '/util.php';
+    include dirname(__FILE__) . '/catalogue.php';
+
+    // Include action- and filter-based customization
+    include dirname(__FILE__) . '/post-type.php';
+    include dirname(__FILE__) . '/templates.php';
+    include dirname(__FILE__) . '/taxonomies.php';
+    include dirname(__FILE__) . '/fields.php';
+    include dirname(__FILE__) . '/prices.php';
+    include dirname(__FILE__) . '/meta-query.php';
+
+    // Include product class
+    include dirname(__FILE__) . '/product.php';
+
+    // Include WordPress output utilities
+    include dirname(__FILE__) . '/functions.php';
+    include dirname(__FILE__) . '/widgets.php';
+
+    // Initialization
+    Cgit\ProductCatalogue::getInstance();
+}, 10);

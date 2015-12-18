@@ -40,7 +40,7 @@ This field cannot be edited directly in WordPress, but will be updated every tim
 
 ## Searches and queries ##
 
-The plugin provides the function `cgit_product_meta_query()` that converts `WP_Query`-like arguments related to products into a meta query that is actually compatible with `WP_Query`. This function is used internally to filter searches that are specifically restricted to the product post type, allowing the following query parameters:
+The `$catalogue->metaQuery()` method converts `WP_Query`-like arguments related to products into a meta query that is actually compatible with `WP_Query`. This function is used internally to filter searches that are specifically restricted to the product post type, allowing the following query parameters:
 
 *   `min_price` minimum price (number)
 *   `max_price` minimum price (number)
@@ -75,9 +75,11 @@ Searching by custom taxonomy is supported natively by WordPress, using the taxon
 
 According to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/), product searches will use the `search.php` template. This plugin adds the option of using a `search-product.php` template to customize the format of product searches.
 
-The plugin provides the `cgit_product_search_form()` function, the `product_search` shortcode, and a product search widget. Their default output can be considered an example form; you can create your own forms or use the `cgit_product_search_form` filter to customize this form to suit your site.
+The `$catalogue->render('search')` method returns the compiled output of the file `views/search.php` within the plugin directory. Future versions of the plugin may include more views that can be rendered with this method. Their default output can be considered an example form; you can create your own forms or use the `cgit_product_search_form` filter to customize this form to suit your site.
 
 ## Functions ##
+
+`cgit_product_catalogue()` returns the single instance of the `Cgit\ProductCatalogue` object. This is mostly used internally to manage the product post type and associated queries. However, you may interact with it in templates to access the `$catalogue::formatCurrency($number, $after = false, $sep = '')` method, which formats numbers with two decimal places and the currency symbol set in `CGIT_PRODUCT_CURRENCY`. If `$after` is true, the symbol is placed after the number; `$sep` is always put between the number and the symbol.
 
 `cgit_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. If `$post_id` is not specified, the function uses the current post ID. This function is provided for convenience, so you don't have to write lots of `get_field()` calls.
 
@@ -99,6 +101,7 @@ Various filters are available to edit the product post type and fields.
 *   `cgit_product_tag` filters the options passed to the `register_taxonomy()` function that defined the product tag taxonomy.
 *   `cgit_product_search_form` filters the HTML of the default search form. You could use this to edit or replace the default search form.
 *   `cgit_product_meta_query` is used in the `cgit_product_meta_query()` function that converts query parameters to WordPress meta queries. You can use this to extend the range of searchable fields.
+*   `cgit_product_render_search` can be used to edit or replace the search form returned by `$catalogue->render('search')`.
 
 ## Requirements ##
 

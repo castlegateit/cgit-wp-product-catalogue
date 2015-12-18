@@ -1,3 +1,11 @@
+<?php
+
+$cat_tax = get_taxonomy(CGIT_PRODUCT_CATEGORY);
+$tag_tax = get_taxonomy(CGIT_PRODUCT_TAG);
+$cats = get_terms(CGIT_PRODUCT_CATEGORY);
+$tags = get_terms(CGIT_PRODUCT_TAG);
+
+?>
 <div class="<?= CGIT_PRODUCT_POST_TYPE ?>-search-form">
 
     <form action="/" method="get">

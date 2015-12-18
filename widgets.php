@@ -4,9 +4,6 @@ namespace Cgit;
 
 /**
  * Search widget
- *
- * Uses the cgit_product_search_form() function to create a search form widget
- * that can be used in any dynamic widget area.
  */
 class ProductSearchWidget extends \WP_Widget
 {
@@ -27,6 +24,8 @@ class ProductSearchWidget extends \WP_Widget
      */
     public function widget($args, $instance)
     {
+        $catalogue = ProductCatalogue::getInstance();
+
         echo $args['before_widget'];
 
         if (!empty($instance['title'])) {
@@ -35,7 +34,7 @@ class ProductSearchWidget extends \WP_Widget
                 . $args['after_title'];
         }
 
-        echo cgit_product_search_form();
+        echo $catalogue->render('search');
         echo $args['after_widget'];
     }
 
