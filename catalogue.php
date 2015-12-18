@@ -144,4 +144,40 @@ class ProductCatalogue extends ProductUtil
         // Return query
         return $query;
     }
+
+    /**
+     * Get products
+     *
+     * This uses get_posts() to return an array of posts that use the product
+     * post type, as set with the CGIT_PRODUCT_POST_TYPE constant. Any option
+     * that could be used with get_posts() can be used here, except post_type.
+     *
+     * Additional arguments: min_price, max_price, inc_vat, featured, discount,
+     * cat_code, and stock. You can also use the match_any option to use an 'OR'
+     * relationship between meta queries instead of the default 'AND'
+     * relationship.
+     */
+    public function products($args)
+    {
+        // Amend options for product type and fields
+        $args['post_type'] = CGIT_PRODUCT_POST_TYPE;
+        $args['meta_query'] = $this->metaQuery($args);
+
+        if (isset($args['orderby']) && $args['orderby'] == 'price') {
+            $args['orderby'] = 'meta_value_num';
+            $args['meta_key'] = 'price';
+        }
+
+        // Get posts
+        $items = get_posts($args);
+
+        // Generate list of product objects instead of default WP_Post objects
+        $products = array();
+
+        foreach ($items as $item) {
+            $products[] = new Product($item->ID);
+        }
+
+        return $products;
+    }
 }
