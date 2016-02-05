@@ -1,6 +1,6 @@
 <?php
 
-namespace Cgit;
+namespace Cgit\Products;
 
 /**
  * Product
@@ -33,7 +33,7 @@ class Product
         }
 
         // Assign values to properties
-        $fields = array(
+        $fields = [
             'price',
             'price_original',
             'inc_vat',
@@ -45,7 +45,7 @@ class Product
             'cat_code',
             'stock',
             'variants',
-        );
+        ];
 
         foreach ($fields as $field) {
             $property = 'product_' . $field;
@@ -56,7 +56,7 @@ class Product
         $this->product_related = get_field('related_products', $id);
 
         // Allow custom properties to be added to the object
-        $custom = apply_filters('cgit_product_properties', array(), $id);
+        $custom = apply_filters('cgit_product_properties', [], $id);
 
         foreach ($custom as $key => $value) {
             $this->$key = $value;
@@ -73,7 +73,7 @@ class Product
     public function related()
     {
         $items = $this->product_related;
-        $products = array();
+        $products = [];
 
         if (!$items) {
             return $products;

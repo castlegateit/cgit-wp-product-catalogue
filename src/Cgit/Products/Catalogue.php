@@ -1,14 +1,14 @@
 <?php
 
-namespace Cgit;
+namespace Cgit\Products;
 
 /**
  * Product catalogue
  *
- * The product catalogue extends the Cgit\ProductUtil class, which provides
- * basic methods for rendering views and formatting currency values.
+ * The product catalogue extends the Utilities class, which provides basic
+ * methods for rendering views and formatting currency values.
  */
-class ProductCatalogue extends ProductUtil
+class Catalogue extends Utilities
 {
 
     /**
@@ -22,7 +22,7 @@ class ProductCatalogue extends ProductUtil
      * The array of default search parameters used in various functions and
      * filters.
      */
-    public $queryArgs = array(
+    public $queryArgs = [
         'match_any' => false,
         'min_price' => false,
         'max_price' => false,
@@ -31,7 +31,7 @@ class ProductCatalogue extends ProductUtil
         'discount' => false,
         'cat_code' => false,
         'stock' => false,
-    );
+    ];
 
     /**
      * Constructor
@@ -47,8 +47,8 @@ class ProductCatalogue extends ProductUtil
         );
 
         // Register product query variables and set query parameters
-        add_filter('query_vars', array($this, 'registerQueryVars'));
-        add_filter('pre_get_posts', array($this, 'setQueryVars'));
+        add_filter('query_vars', [$this, 'registerQueryVars']);
+        add_filter('pre_get_posts', [$this, 'setQueryVars']);
     }
 
     /**
@@ -77,7 +77,7 @@ class ProductCatalogue extends ProductUtil
         $args = array_merge($this->queryArgs, $args);
 
         // Return filtered meta query
-        return apply_filters('cgit_product_meta_query', array(), $args);
+        return apply_filters('cgit_product_meta_query', [], $args);
     }
 
     /**
@@ -123,10 +123,10 @@ class ProductCatalogue extends ProductUtil
 
         // Set default search order (featured, then alphabetically by name)
         if (!get_query_var('orderby')) {
-            $order = array(
+            $order = [
                 'meta_value_num' => 'DESC',
                 'title' => 'ASC',
-            );
+            ];
 
             $query->set('orderby', $order);
             $query->set('meta_key', 'featured');
@@ -181,7 +181,7 @@ class ProductCatalogue extends ProductUtil
         $items = get_posts($args);
 
         // Generate list of product objects instead of default WP_Post objects
-        $products = array();
+        $products = [];
 
         foreach ($items as $item) {
             $products[] = new Product($item->ID);

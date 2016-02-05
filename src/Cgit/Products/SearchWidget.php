@@ -1,11 +1,11 @@
 <?php
 
-namespace Cgit;
+namespace Cgit\Products;
 
 /**
  * Search widget
  */
-class ProductSearchWidget extends \WP_Widget
+class SearchWidget extends \WP_Widget
 {
 
     /**
@@ -24,7 +24,7 @@ class ProductSearchWidget extends \WP_Widget
      */
     public function widget($args, $instance)
     {
-        $catalogue = ProductCatalogue::getInstance();
+        $catalogue = Catalogue::getInstance();
 
         echo $args['before_widget'];
 
@@ -67,7 +67,3 @@ class ProductSearchWidget extends \WP_Widget
         return $instance;
     }
 }
-
-add_action('widgets_init', function() {
-    register_widget('Cgit\ProductSearchWidget');
-});

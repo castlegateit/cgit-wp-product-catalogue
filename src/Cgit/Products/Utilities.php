@@ -1,6 +1,6 @@
 <?php
 
-namespace Cgit;
+namespace Cgit\Products;
 
 /**
  * Common product catalogue utilities
@@ -8,7 +8,7 @@ namespace Cgit;
  * This class can be extended to provide useful common functions to the product
  * catalogue and related plugins.
  */
-abstract class ProductUtil
+abstract class Utilities
 {
 
     /**
@@ -36,7 +36,7 @@ abstract class ProductUtil
 
         // Set default view path
         if (!$path) {
-            $path = dirname(__FILE__) . '/views';
+            $path = self::pluginDir() . '/views';
         }
 
         if (substr($path, -1) != '/') {
@@ -75,5 +75,18 @@ abstract class ProductUtil
         }
 
         return $str;
+    }
+
+    /**
+     * Return plugin directory path
+     */
+    public static function pluginDir($file = __FILE__)
+    {
+        $dir = plugin_basename($file);
+        $dir = trim($dir, '/');
+        $dir = explode('/', $dir)[0];
+        $dir = str_replace(plugin_basename($file), '', $file) . $dir;
+
+        return $dir;
     }
 }

@@ -79,11 +79,11 @@ The `$catalogue->render('search')` method returns the compiled output of the fil
 
 ## Functions ##
 
-`cgit_product_catalogue()` returns the single instance of the `Cgit\ProductCatalogue` object. This is mostly used internally to manage the product post type and associated queries. However, you may interact with it in templates to access the `$catalogue::formatCurrency($number, $after = false, $sep = '')` method, which formats numbers with two decimal places and the currency symbol set in `CGIT_PRODUCT_CURRENCY`. If `$after` is true, the symbol is placed after the number; `$sep` is always put between the number and the symbol.
+`cgit_product_catalogue()` returns the single instance of the `Cgit\Products\Catalogue` object. This is mostly used internally to manage the product post type and associated queries. However, you may interact with it in templates to access the `$catalogue::formatCurrency($number, $after = false, $sep = '')` method, which formats numbers with two decimal places and the currency symbol set in `CGIT_PRODUCT_CURRENCY`. If `$after` is true, the symbol is placed after the number; `$sep` is always put between the number and the symbol.
 
-`cgit_product($post_id)` returns a `Cgit\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. If `$post_id` is not specified, the function uses the current post ID. This function is provided for convenience, so you don't have to write lots of `get_field()` calls.
+`cgit_product($post_id)` returns a `Cgit\Products\Product` object, which is based on the default `WP_Post` object, but has additional properties for the various product details. If `$post_id` is not specified, the function uses the current post ID. This function is provided for convenience, so you don't have to write lots of `get_field()` calls.
 
-`cgit_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
+`cgit_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Products\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
 
     $featured = cgit_products(array(
         'featured' => true

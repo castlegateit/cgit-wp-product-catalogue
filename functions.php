@@ -1,5 +1,8 @@
 <?php
 
+use Cgit\Products\Catalogue;
+use Cgit\Products\Product;
+
 /**
  * Get product catalogue
  *
@@ -7,7 +10,7 @@
  * the single instance of Cgit\ProductCatalogue.
  */
 function cgit_product_catalogue() {
-    return Cgit\ProductCatalogue::getInstance();
+    return Catalogue::getInstance();
 }
 
 /**
@@ -23,7 +26,7 @@ function cgit_product($id = null) {
         $id = $GLOBALS['post']->ID;
     }
 
-    return new Cgit\Product($id);
+    return new Product($id);
 }
 
 /**
@@ -33,6 +36,6 @@ function cgit_product($id = null) {
  * an array of Cgit\Product objects.
  */
 function cgit_products($args) {
-    $catalogue = Cgit\ProductCatalogue::getInstance();
+    $catalogue = Catalogue::getInstance();
     return $catalogue->products($args);
 }
