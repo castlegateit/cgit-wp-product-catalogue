@@ -3,12 +3,12 @@
 namespace Cgit\Products;
 
 /**
- * Plugin class
+ * Loader class
  *
  * Register the post types, templates, fields, query parameters, and widgets
- * required by the plugin.
+ * required by the plugin and initialize the Catalogue instance.
  */
-class Plugin
+class Loader
 {
     /**
      * Reference to the singleton instance of the class
@@ -37,6 +37,9 @@ class Plugin
 
         // Register widgets
         add_action('widgets_init', [$this, 'registerWidgets']);
+
+        // Initialize catalogue
+        Catalogue::getInstance();
     }
 
     /**

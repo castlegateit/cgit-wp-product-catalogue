@@ -12,8 +12,7 @@ License: MIT
 
 */
 
-use Cgit\Products\Plugin;
-use Cgit\Products\Catalogue;
+use Cgit\Products\Loader;
 
 $plugin_file = __FILE__;
 
@@ -32,6 +31,5 @@ add_action('plugins_loaded', function() {
     require __DIR__ . '/functions.php';
 
     // Initialization
-    Plugin::getInstance();
-    Catalogue::getInstance();
+    Loader::getInstance();
 }, 10);
