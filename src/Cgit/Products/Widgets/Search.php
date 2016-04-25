@@ -1,11 +1,13 @@
 <?php
 
-namespace Cgit\Products;
+namespace Cgit\Products\Widgets;
+
+use Cgit\Products\Catalogue;
 
 /**
  * Search widget
  */
-class SearchWidget extends \WP_Widget
+class Search extends \WP_Widget
 {
 
     /**

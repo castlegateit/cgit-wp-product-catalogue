@@ -578,6 +578,6 @@ class Loader
      */
     public function registerWidgets()
     {
-        register_widget('Cgit\Products\SearchWidget');
+        register_widget('Cgit\Products\Widgets\Search');
     }
 }
