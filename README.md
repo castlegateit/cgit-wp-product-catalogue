@@ -56,18 +56,20 @@ As with `WP_Query` and `get_posts()`, you can use the `orderby` and `order` (`AS
 
 Therefore, you could use something like the following to allow quick sorting of products on a search or archive page:
 
-    <?php
+~~~ php
+<?php
 
-    $asc = add_query_arg('order', 'asc');
-    $desc = add_query_arg('order', 'desc');
+$asc = add_query_arg('order', 'asc');
+$desc = add_query_arg('order', 'desc');
 
-    ?>
-    <p>
-        <a href="<?= add_query_arg('orderby', 'title', $asc) ?>">Sort by name (ascending)</a>
-        <a href="<?= add_query_arg('orderby', 'title', $desc) ?>">Sort by name (descending)</a>
-        <a href="<?= add_query_arg('orderby', 'price', $asc) ?>">Sort by price (ascending)</a>
-        <a href="<?= add_query_arg('orderby', 'price', $desc) ?>">Sort by price (descending)</a>
-    </p>
+?>
+<p>
+    <a href="<?= add_query_arg('orderby', 'title', $asc) ?>">Sort by name (ascending)</a>
+    <a href="<?= add_query_arg('orderby', 'title', $desc) ?>">Sort by name (descending)</a>
+    <a href="<?= add_query_arg('orderby', 'price', $asc) ?>">Sort by price (ascending)</a>
+    <a href="<?= add_query_arg('orderby', 'price', $desc) ?>">Sort by price (descending)</a>
+</p>
+~~~
 
 Searching by custom taxonomy is supported natively by WordPress, using the taxonomy slug as the query parameter. Assuming that `CGIT_PRODUCT_CATEGORY` is `product_category`, you can could use `?product_category=foo` to search for a single category or `?product_category[]=foo&product_category[]=bar` to search for multiple categories.
 
@@ -85,9 +87,11 @@ The `$catalogue->render('search')` method returns the compiled output of the fil
 
 `cgit_products($args)` works like `get_posts`, but allows more arguments (see Searches and queries above) and returns an array of `Cgit\Products\Product` objects instead of `WP_Post` objects. This could be used to return a list of featured products:
 
-    $featured = cgit_products(array(
-        'featured' => true
-    ));
+~~~ php
+$featured = cgit_products(array(
+    'featured' => true
+));
+~~~
 
 ## Filters ##
 
